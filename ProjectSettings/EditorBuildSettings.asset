@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 11b8d4df807f4e64592a514fb829a00e
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: cff5689348ea4e84b95dec5788e8b16f
   m_configObjects: {}

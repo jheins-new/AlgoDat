@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
     public GameObject SettingsUI;
     public GameObject MainMenuUI;
-    public int SettingMenuOpen = 0;                     //0 = false ; 1 = true
+    public bool SettingMenuOpen = false;                     
 
     public void PlayButton()                                //start game
     {
@@ -18,7 +18,7 @@ public class MainMenuController : MonoBehaviour
     {
         SettingsUI.SetActive(true);            //makes setting menu visible
         MainMenuUI.SetActive(false);           //makes main menu invisible
-        SettingMenuOpen = 1;
+        SettingMenuOpen = true;
     }
 
     public void CreditsButton()                                //switch Credits-Scene
@@ -42,12 +42,12 @@ public class MainMenuController : MonoBehaviour
 
         Scene activeScene = SceneManager.GetActiveScene();
 
-        if (Input.GetKeyDown(KeyCode.Escape) && SettingMenuOpen == 1) //when the settings are open and you press escape, you get to the MainMenu  
+        if (Input.GetKeyDown(KeyCode.Escape) && SettingMenuOpen == true) //when the settings are open and you press escape, you get to the MainMenu  
         {
        
             MainMenuUI.SetActive(true);             
             SettingsUI.SetActive(false);            
-            SettingMenuOpen = 0;
+            SettingMenuOpen = false;
 
         }
 
