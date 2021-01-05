@@ -7,30 +7,38 @@ public class PauseMenuController : MonoBehaviour
 {
     public GameObject SettingsUI;
     public GameObject PauseMenuUI;
-    public int SettingsUIOpen = 0;
+    public GameObject GameSceneUI;
+    public GameObject PauseMenuCamera;
+    public bool SettingsUIOpen = false;
+    
+
 
     public void ResumeButton()                                
     {
         PauseMenuUI.SetActive(false);
+        GameSceneUI.SetActive(true);
+        PauseMenuCamera.SetActive(false);
+        Time.timeScale = 1;
+
     }
 
     public void SettingsButton()
     {
         SettingsUI.SetActive(true);
         PauseMenuUI.SetActive(false);
-        SettingsUIOpen = 1;
+        SettingsUIOpen = true;
     }
 
     public void SettingsBackButton()
     {
         SettingsUI.SetActive(false);
         PauseMenuUI.SetActive(true);
-        SettingsUIOpen = 0;
+        SettingsUIOpen = false;
     }
 
     public void ExitToMainMenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+       SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGameButton()
@@ -42,18 +50,24 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SettingsUIOpen == 0) //opens pause menu
+        if (Input.GetKeyDown(KeyCode.Escape) && SettingsUIOpen == false) //opens pause menu
         {
+            Time.timeScale = 0;
+            PauseMenuCamera.SetActive(true);
+            GameSceneUI.SetActive(false);
             PauseMenuUI.SetActive(true);
-          
+           
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && SettingsUIOpen == 1) //close settings menu; open pause menu
+        if (Input.GetKeyDown(KeyCode.Escape) && SettingsUIOpen == true) //close settings menu; open pause menu
         {
             SettingsUI.SetActive(false);
             PauseMenuUI.SetActive(true);
-            SettingsUIOpen = 0;
+            SettingsUIOpen = false;
         }
 
     }
+
+    
 }
